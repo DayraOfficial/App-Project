@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permohonan Pembukaan Akun WhatsApp</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #00FF9F;
+            text-shadow: 2px 2px 5px rgba(0, 255, 159, 0.7);
+        }
+
+        .container {
+            background: linear-gradient(45deg, #1a1a1a, #2b2b2b);
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 255, 159, 0.2);
+            text-align: center;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #00FF9F;
+            border-radius: 5px;
+            background-color: #1c1c1c;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        input:focus, textarea:focus, button:focus {
+            outline: none;
+            border-color: #00b38b;
+        }
+
+        button {
+            background-color: #00FF9F;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #00b38b;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        .footer a {
+            color: #00FF9F;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Permohonan Pembukaan Akun WhatsApp yang Diblokir</h1>
+        <form id="emailForm">
+            <label for="phone">Nomor WhatsApp yang Diblokir:</label>
+            <input type="text" id="phone" name="phone" placeholder="Masukkan Nomor WhatsApp yang Diblokir" required>
+
+            <label for="request">Permohonan Pembukaan Akun:</label>
+            <textarea id="request" name="request" rows="6" placeholder="Tulis permohonan Anda di sini..." required></textarea>
+
+            <button type="submit">Kirim Permohonan</button>
+        </form>
+        <div class="footer">
+            <p>Powered by <a href="https://www.emailjs.com" target="_blank">EmailJS</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Inisialisasi EmailJS
+        emailjs.init("yZ9kSMlNcxOyAh8TP"); // Ganti dengan User ID dari EmailJS
+
+        // Fungsi untuk mengirim email
+        document.getElementById("emailForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Ambil nilai input
+            var phone = document.getElementById("phone").value;
+            var request = document.getElementById("request").value;
+
+            // Kirim email
+            var templateParams = {
+                phone_number: phone,
+                message: request,
+                to_email: 'swbsupport@support.whatsapp.com',
+                from_email: 'gogelakun629@gmail.com'
+            };
+
+            emailjs.send('service_your_service_id', 'template_your_template_id', templateParams)
+                .then(function(response) {
+                    alert("Permohonan berhasil dikirim!");
+                }, function(error) {
+                    alert("Gagal mengirim permohonan. Coba lagi.");
+                });
+        });
+    </script>
+</body>
+</html>
